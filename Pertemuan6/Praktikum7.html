@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Praktikum 7</title>
+	</head>
+	<body>
+		<script language="Javascript">
+			var vnama, vtujuan, vjumlahtiket;
+			var vht = 0.0;
+			var vsub = 0.0;
+			var vdiskon = 0.0;
+			var vtotal = 0.0;
+
+			function harga(){
+				vtujuan = (fform.itujuan.value);
+				
+				if (vtujuan=="Pekalongan-Semarang"){
+					vht =100000;
+				}
+				else if (vtujuan=="Pekalongan-Cirebon"){
+					vht =150000;
+				}
+				else if (vtujuan=="Pekalongan-Jakarta") {
+					vht =200000;
+				}
+
+				else {
+					vht = 250000;
+				}
+
+				fform.otiket.value=eval(vht);
+
+			}
+
+			function hitungtotal(){
+				vnama = (fform.inama.value);
+				vtujuan = (fform.itujuan.value);
+				vjumlahtiket = parseFloat(fform.ijumlah.value);
+				
+				if (vtujuan=="Pekalongan-Semarang"){
+					vht =100000;
+				}
+				else if (vtujuan=="Pekalongan-Cirebon"){
+					vht =150000;
+				}
+				else if (vtujuan=="Pekalongan-Jakarta") {
+					vht =200000;
+				}
+
+				else {
+					vht = 250000;
+				}
+
+				vsub = vjumlahtiket * vht;
+
+				if (fform.imember.checked==true){
+					vdiskon = 0.10*vsub;
+				}
+				else {
+					vdiskon = 0.0;
+				}
+
+				vtotal = vsub - vdiskon;
+				fform.otiket.value=eval(vht);
+				fform.osub.value=eval(vsub);
+				fform.odiskon.value=eval(vdiskon)
+				fform.ototal.value=eval(vtotal);
+			}
+		</script>
+		<form name="fform">
+			<table border="1" align="center" width="40%">
+				<tr>
+					<td width="100%" colspan="2"><h2 align="center">Travel Bintang Abadi</h2></td>
+				</tr>
+
+				<tr>
+					<td width="50%">
+						Nama<br>
+						<input type="text" name="inama" style="width: 100%"><br>
+
+						Member<br>
+						<input type="checkbox" name="imember">Ya<br>
+
+						Tujuan<br>
+						<select name="itujuan" style="width: 100%" onchange="harga()">
+							<option value="">-- Pilih --</option>
+							<option value="Pekalongan-Semarang">Pekalongan-Semarang</option>
+							<option value="Pekalongan-Cirebon">Pekalongan-Cirebon</option>
+							<option value="Pekalongan-Jakarta">Pekalongan-Jakarta</option>
+							<option value="Pekalongan-Jogja">Pekalongan-Jogja</option>
+						</select><br>
+
+						Jumlah Tiket<br>
+						<input type="text" name="ijumlah" style="width: 100%" onchange="hitungtotal()">
+						<br>
+
+					</td>
+
+					<td width="50%">
+						
+						Harga Tiket<br>
+						<input type="text" name="otiket" style="width: 100%"><br>
+
+						Sub Total<br>
+						<input type="text" name="osub" style="width: 100%"><br>
+
+						Diskon<br>
+						<input type="text" name="odiskon" style="width: 100%"><br>
+
+						Total Bayar<br>
+						<input type="text" name="ototal" style="width: 100%">
+					</td>
+				</tr>
+
+				<tr>
+					<td width="100%" colspan="2">
+						<center>
+							<input type="reset" value="Ulangi">
+						</center>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</body>
+</html>
